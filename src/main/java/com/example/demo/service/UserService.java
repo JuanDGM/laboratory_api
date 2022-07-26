@@ -16,18 +16,12 @@ public class UserService {
     @Autowired
     private IUserRepository userRepository;
     
-    @Autowired
-    private IResulRepository resultRepository;
-    
     public User create(User user){
         String levelRisk = this.calculateLevelRisk(user);
         user.setLevelRisk(levelRisk);
         User data = userRepository.save(user);
-        resultRepository.save();   
         return data;
     }
-
-    
 
 
     public List<User>getAllUsers(){
