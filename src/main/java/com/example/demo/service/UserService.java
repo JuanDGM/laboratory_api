@@ -15,14 +15,12 @@ public class UserService {
     
     @Autowired
     private IUserRepository userRepository;
-    
+
     public User create(User user){
         String levelRisk = this.calculateLevelRisk(user);
         user.setLevelRisk(levelRisk);
-        User data = userRepository.save(user);
-        return data;
+        return userRepository.save(user);
     }
-
 
     public List<User>getAllUsers(){
         return userRepository.findAll();

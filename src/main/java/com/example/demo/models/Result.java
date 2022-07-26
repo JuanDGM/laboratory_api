@@ -38,8 +38,8 @@ public class Result implements Serializable{
     @Column(name="RES_NIVEL_RIESGO")
 	private String levelRisk;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "result")
-    private List<User> user;
+    /* @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "result")
+    private List<User> user; */
 
 
     public Result(){

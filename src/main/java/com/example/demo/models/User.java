@@ -33,10 +33,10 @@ public class User implements Serializable{
     @Column(name="USU_CORREO")
 	private String email;
     
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+	/* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "RES_TBL_USUARIOS_ID", referencedColumnName = "RES_TBL_USUARIOS_ID")
 	private Result result;	
-
+ */
 
     @Column(name="USU_AZUCAR")
 	private Float sugar;
