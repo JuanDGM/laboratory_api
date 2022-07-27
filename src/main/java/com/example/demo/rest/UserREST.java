@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.models.User;
 import com.example.demo.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserREST {
@@ -25,6 +27,7 @@ public class UserREST {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "Crea un usuario")
     @PostMapping("/create")
     private ResponseEntity<User> save(@RequestBody User user) {
 

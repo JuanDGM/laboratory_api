@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +16,14 @@ public class UserService {
     private IUserRepository userRepository;
 
     public User create(User user){
+
+        
         String levelRisk = this.calculateLevelRisk(user);
         user.setLevelRisk(levelRisk);
-        return userRepository.save(user);
+        User data = userRepository.save(user);
+        
+
+        return data;
     }
 
     public List<User>getAllUsers(){
