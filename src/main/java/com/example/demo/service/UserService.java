@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,31 +15,21 @@ public class UserService {
     private IUserRepository userRepository;
 
     public User create(User user){
-
         
         String levelRisk = this.calculateLevelRisk(user);
         user.setLevelRisk(levelRisk);
-        User data = userRepository.save(user);
-        
-
-        return data;
-    }
+        return userRepository.save(user);
+   }
 
     public List<User>getAllUsers(){
         return userRepository.findAll();
     }
     
-    public void delete(User user){
-        userRepository.delete(user);
+    public List<User> findByFilters (String typeDocument, String documentIdentification){
+        return userRepository.findByTypeDocumentAndDocumentIdentification(typeDocument, documentIdentification);
     }
-
-    public Optional<User> findById (Long id){
-        return userRepository.findById(id);
-    }
-
 
     private String calculateLevelRisk(User user){
-
         Float sugar = user.getSugar();
         Float fat = user.getFat();
         Float oxygen = user.getOxygen();

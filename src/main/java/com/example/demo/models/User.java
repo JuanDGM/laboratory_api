@@ -1,21 +1,10 @@
 package com.example.demo.models;
 
-import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "TBL_USUARIOS")
-public class User implements Serializable{
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,19 +14,17 @@ public class User implements Serializable{
 	private String name;
     
     @Column(name="USU_APELLIDO")
-	private String surname;
+	private String lastName;
     
-    @Column(name="USU_DOCUMENTO")
-	private String document;
+    @Column(name="USU_TIPO_DOCUMENTO")
+	private String typeDocument;
+
+	@Column(name="USU_DOCUMENTO")
+	private String documentIdentification;
 
     @Column(name="USU_CORREO")
 	private String email;
     
-	/* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-	@JoinColumn(name = "RES_TBL_USUARIOS_ID", referencedColumnName = "RES_TBL_USUARIOS_ID")
-	private Result result;	
- */
-
     @Column(name="USU_AZUCAR")
 	private Float sugar;
     
@@ -49,20 +36,34 @@ public class User implements Serializable{
 	
     @Column(name="USU_NIVEL_RIESGO")
 	private String levelRisk;
+    
+	@Column(name="USU_USUARIO_CREA")
+	private String userAt;
 	
+	@Column(name="USU_USUARIO_ACTUALIZA")
+	private String userUpdatedAt;
+
+	@Column(name="USU_FECHA_CREACION")
+	private String createdAt;
+	
+	@Column(name="USU_FECHA_ACTUALIZACION")
+	private String updatedAt;
+
 	public User () {
 		
 	}
 	
-	public User(Long id, String name, String surname, String email, Float sugar, Float fat, Float oxygen, String levelRisk) {
+	public User(Long id, String name, String lastName, String typeDocument, String documentIdentification, String email, Float sugar, Float fat, Float oxygen, String levelRisk) {
 		this.id = id;
 		this.name = name;
-		this.surname = surname;
+		this.lastName = lastName;
+		this.typeDocument= typeDocument;
+		this.documentIdentification=documentIdentification;
 		this.email = email;
 		this.sugar = sugar;
 		this.fat = fat;
 		this.oxygen = oxygen;
-		this.levelRisk = levelRisk;
+		
 	}
 	public Long getId() {
 		return id;
@@ -76,11 +77,23 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getTypeDocument() {
+		return typeDocument;
+	}
+	public void setTypeDocument(String typeDocument) {
+		this.typeDocument = typeDocument;
+	}
+	public String getDocumentIdentification() {
+		return documentIdentification;
+	}
+	public void setDocumentIdentification(String documentIdentification) {
+		this.documentIdentification = documentIdentification;
 	}
 	public String getEmail() {
 		return email;
