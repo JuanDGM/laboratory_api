@@ -53,7 +53,7 @@ public class UserREST {
     }
    
     @Operation(summary = "Obtiene la información del usuario y sus resultados buscado por documento y tipo de documento")
-    @GetMapping (value = "{name}")
+    @GetMapping ("/dataUser")
     private ResponseEntity<List<User>> getUserByFilters(@RequestParam("identificationType") String identificationType, @RequestParam("documentIdentification") String documentIdentification) {
         return ResponseEntity.ok(userService.findByFilters(identificationType,documentIdentification));
     }
