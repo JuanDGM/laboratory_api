@@ -1,6 +1,11 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table (name = "TBL_USUARIOS")
@@ -10,27 +15,39 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-    @Column(name="USU_NOMBRE")
+	@NotBlank(message = "Campo obligatorio")
+	@Column(name="USU_NOMBRE")
 	private String name;
     
     @Column(name="USU_APELLIDO")
 	private String lastName;
     
+	@NotBlank(message = "Campo obligatorio")
     @Column(name="USU_TIPO_DOCUMENTO")
 	private String typeDocument;
 
+	@NotBlank()
 	@Column(name="USU_DOCUMENTO")
 	private String documentIdentification;
 
     @Column(name="USU_CORREO")
 	private String email;
     
+	@NotNull
+	@Min(0)
+	@Max(100)
     @Column(name="USU_AZUCAR")
 	private Double sugar;
     
-    @Column(name="USU_GRASA")
+	@NotNull
+	@Min(0)
+	@Max(100)
+	@Column(name="USU_GRASA")
 	private Double fat;
     
+	@NotNull
+	@Min(0)
+	@Max(100)
     @Column(name="USU_OXIGENO")
 	private Double oxygen;
 	

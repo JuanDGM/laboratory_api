@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 import com.example.demo.models.User;
 import com.example.demo.repository.IUserRepository;
 
-
 public class UserServiceTest {
 
     @Mock
@@ -36,7 +35,6 @@ public class UserServiceTest {
         user.setSugar(70.0);
         user.setTypeDocument("CC");
         user.setDocumentIdentification("123");
-        
     }
 
     @Test
@@ -44,7 +42,6 @@ public class UserServiceTest {
         when(userRepository.findAll()).thenReturn(Arrays.asList(user));
         assertNotNull(userService.findByFilters("CC", "123"));
     }
-    
     
     @Test
     void GetAllUsers() {
@@ -57,7 +54,4 @@ public class UserServiceTest {
         when(userRepository.save(user)).thenReturn(user);
         assertNotNull(userService.create(user));
     }
-   
-    
-
 }
