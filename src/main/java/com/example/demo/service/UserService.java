@@ -30,9 +30,9 @@ public class UserService {
     }
 
     private String calculateLevelRisk(User user){
-        Float sugar = user.getSugar();
-        Float fat = user.getFat();
-        Float oxygen = user.getOxygen();
+        Double sugar = user.getSugar();
+        Double fat = user.getFat();
+        Double oxygen = user.getOxygen();
 
         if(sugar>70 && fat>88.5 && oxygen<60){
             return "ALTO";

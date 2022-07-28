@@ -26,13 +26,13 @@ public class User {
 	private String email;
     
     @Column(name="USU_AZUCAR")
-	private Float sugar;
+	private Double sugar;
     
     @Column(name="USU_GRASA")
-	private Float fat;
+	private Double fat;
     
     @Column(name="USU_OXIGENO")
-	private Float oxygen;
+	private Double oxygen;
 	
     @Column(name="USU_NIVEL_RIESGO")
 	private String levelRisk;
@@ -53,7 +53,7 @@ public class User {
 		
 	}
 	
-	public User(Long id, String name, String lastName, String typeDocument, String documentIdentification, String email, Float sugar, Float fat, Float oxygen, String levelRisk) {
+	public User(Long id, String name, String lastName, String typeDocument, String documentIdentification, String email, Double sugar, Double fat, Double oxygen, String levelRisk) {
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
@@ -101,22 +101,22 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Float getSugar() {
+	public Double getSugar() {
 		return sugar;
 	}
-	public void setSugar(Float sugar) {
+	public void setSugar(Double sugar) {
 		this.sugar = sugar;
 	}
-	public Float getFat() {
+	public Double getFat() {
 		return fat;
 	}
-	public void setFat(Float fat) {
+	public void setFat(Double fat) {
 		this.fat = fat;
 	}
-	public Float getOxygen() {
+	public Double getOxygen() {
 		return oxygen;
 	}
-	public void setOxygen(Float oxygen) {
+	public void setOxygen(Double oxygen) {
 		this.oxygen = oxygen;
 	}
 	public String getLevelRisk() {
