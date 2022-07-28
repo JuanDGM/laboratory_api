@@ -3,9 +3,13 @@ package com.example.demo.rest;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.hibernate.annotations.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +31,16 @@ public class UserREST {
 
     @Operation(summary = "Almacena la información del paciente y sus resultados de laboratorio")
     @PostMapping("/create")
-    private ResponseEntity<User> save(@RequestBody User user) {
-        User temporalUser = userService.create(user);
+    private ResponseEntity save(@Valid @RequestBody User user, BindingResult bindingResult) {
+        
+        if(bindingResult.hasErrors()){
+            
+            return  ResponseEntity.ok(bindingResult.getAllErrors());
+        }
         try {
-            return ResponseEntity.created(new URI("/api/user/create" + temporalUser.getId())).body(temporalUser);
+            User newUser = userService.create(user);
+            
+            return ResponseEntity.created(new URI("/api/user/create" + newUser.getId())).body(newUser);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
